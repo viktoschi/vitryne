@@ -634,7 +634,8 @@ pub fn convert_with(
 }
 
 /// A fabric from the engine's material (FORMAT.md, From garment.toml: Y = 2k/√3, shear 3Y/8,
-/// the default friction). `category`: woven | knit (default) | nonwoven.
+/// the default friction). `category`: woven | knit (default) | nonwoven (which also covers latex
+/// sheet; see docs/FABRICS.md).
 pub(crate) fn fabric_entity(
     id: Id,
     material: Material,

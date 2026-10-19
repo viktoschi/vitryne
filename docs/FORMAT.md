@@ -448,7 +448,7 @@ which appearance it has by default:
 
 | Field | Meaning | Unit |
 |---|---|---|
-| `category` | `woven`, `knit` or `nonwoven` (quality targets differ: p99 strain 3% woven, 8% knit) | |
+| `category` | `woven`, `knit` or `nonwoven` (quality targets differ: p99 strain 3% woven, 8% knit; `nonwoven` also covers films such as latex sheet) | |
 | `density` | areal density | kg/m² |
 | `thickness` | optional; not used by the v1 engine (collision thickness is a simulation setting) | mm |
 | `stretch.warp`, `.weft` | tensile stiffness along the grain and across it: force per unit width per unit strain | N/m |
@@ -463,6 +463,8 @@ which appearance it has by default:
 tests, like KES-F or FAST), and the ones published presets (M9, `docs/FABRICS.md`) will cite.
 They're independent of mesh resolution and of the solver. Anisotropy (warp ≠ weft) is in the
 format from the start, even though the v1 engine is isotropic (see [In the engine](#in-the-engine)).
+Latex sheet has no grain: the latex presets (`docs/FABRICS.md`) set warp = weft and shear =
+stretch / 2, and use `nonwoven` because the v1 category list has no separate film class.
 **Why appearance isn't here:** colour and texture change per colourway while the physics stays
 the same. They're a separate entity: [Appearance](#appearance). A fabric only names one as its
 default, so "navy denim" is one thing to pick (the editor's fabrics are picked that way), and a

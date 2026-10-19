@@ -502,6 +502,9 @@ function withPhysics(f: Fabric, from: Fabric): Fabric {
   else delete out.thickness;
   if (from.notes !== undefined) out.notes = from.notes;
   else delete out.notes;
+  if (from.attribution !== undefined)
+    out.attribution = { ...from.attribution };
+  else delete out.attribution;
   return out;
 }
 

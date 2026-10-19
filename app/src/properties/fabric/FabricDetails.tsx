@@ -51,7 +51,7 @@ const FABRIC_UI: {
     ends: ["Light", "Heavy"],
     scale: 1000,
     min: 30,
-    max: 600,
+    max: 2500,
   },
   {
     field: "thickness",
@@ -62,7 +62,7 @@ const FABRIC_UI: {
     max: 5.0,
     step: 0.05,
   },
-  // Stored in N/m (FORMAT.md), shown in kN/m: a woven's are in the thousands, not the millions.
+  // Stored in N/m (FORMAT.md), shown in kN/m: a woven's are in the thousands, latex's in the hundreds.
   {
     field: "stretchWarp",
     label: "Stretch along the grain",

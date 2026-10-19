@@ -739,3 +739,16 @@ pub fn avatar_mesh(doc: &Document) -> Result<Option<BodyMesh>, String> {
         mesh.indices.as_chunks::<3>().0.to_vec(),
     )))
 }
+
+#[cfg(test)]
+mod tests {
+    use super::fabric_to_material;
+
+    #[test]
+    fn latex_maps_to_the_expected_solver_material() {
+        let m = fabric_to_material(&vitryne_format::presets::latex_0_4());
+        assert!((m.density - 0.34899).abs() < 1e-6);
+        assert!((m.stretch_k - 301.614).abs() < 0.01);
+        assert!((m.bend_kb - 2.482e-6).abs() < 1e-12);
+    }
+}

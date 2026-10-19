@@ -205,6 +205,8 @@ pub fn fabric_color(fabric: &Fabric) -> [f32; 4] {
         [0.78, 0.72, 0.70, 1.0] // Heather rose fleece
     } else if lower.contains("wool") || lower.contains("suit") {
         [0.22, 0.22, 0.25, 1.0] // Charcoal suiting
+    } else if lower.contains("latex") {
+        [0.02, 0.02, 0.025, 1.0] // Black latex sheet
     } else {
         match fabric.category {
             vitryne_format::Category::Knit => [0.75, 0.82, 0.76, 1.0], // Sage knit
@@ -223,6 +225,8 @@ pub fn fabric_roughness(fabric: &Fabric) -> f32 {
         0.85
     } else if lower.contains("poplin") {
         0.75
+    } else if lower.contains("latex") {
+        0.25
     } else {
         0.80
     }
@@ -529,5 +533,12 @@ mod tests {
         assert!(obj_export.mtl.contains("newmtl Cotton jersey"));
         assert!(obj_export.mtl.contains("newmtl Denim"));
         assert!(obj_export.mtl.contains("newmtl Avatar"));
+    }
+
+    #[test]
+    fn latex_without_an_appearance_exports_black_and_glossy() {
+        let latex = presets::latex_0_4();
+        assert_eq!(fabric_color(&latex), [0.02, 0.02, 0.025, 1.0]);
+        assert_eq!(fabric_roughness(&latex), 0.25);
     }
 }

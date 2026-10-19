@@ -26,6 +26,14 @@ const KIND_HINTS: Record<string, string> = {
   "Poplin (shirting)": "Shirts: light, crisp small folds",
   Fleece: "Sweatshirts: thick, rounded folds",
   "Wool suiting": "Tailoring: fluid, clean creases",
+  "Latex 0.25 mm": "Derived: thin, very stretchy",
+  "Latex 0.4 mm (Radical Rubber)": "Measured: catsuit weight",
+  "Latex 1.0 mm": "Derived: heavy, firm",
+  "Latex laminate 2 × 0.25 mm": "Derived laminate: 0.5 mm",
+  "Latex laminate 0.4 + 0.25 mm": "Derived laminate: 0.65 mm",
+  "Latex laminate 2 × 0.4 mm": "Derived laminate: 0.8 mm",
+  "Latex laminate 3 × 0.4 mm": "Derived laminate: 1.2 mm",
+  "Latex laminate 2 × 1.0 mm": "Derived laminate: 2 mm, stiff",
 };
 
 export function NewFabric(props: {

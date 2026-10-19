@@ -39,13 +39,7 @@ import {
 } from "./commands";
 import { type Entities, mainGarment } from "./entities";
 import { deepFreeze } from "./json";
-import {
-  COTTON_JERSEY,
-  DENIM,
-  FLEECE,
-  POPLIN,
-  WOOL_SUITING,
-} from "@/format/presets";
+import { DENIM, FABRIC_PRESETS, FLEECE, POPLIN } from "@/format/presets";
 
 /** One of each command, on a document. */
 function everyCommand(e: Entities): Command[] {
@@ -409,12 +403,13 @@ describe("fabric presets and overrides", () => {
   it("applies every preset, validating schema and Rust compatibility", () => {
     const { file, entities } = openExample("tshirt");
     const fabric = entities.fabrics[0]!;
-    for (const preset of [COTTON_JERSEY, DENIM, POPLIN, FLEECE, WOOL_SUITING]) {
+    for (const preset of FABRIC_PRESETS) {
       const cmd = applyFabricPreset(entities, fabric.id, preset);
       const applied = applyCommand(entities, cmd);
       expect(applied.fabrics[0]?.density).toBe(preset.density);
       expect(applied.fabrics[0]?.stretch.warp).toBe(preset.stretch.warp);
       expect(applied.fabrics[0]?.bending.warp).toBe(preset.bending.warp);
+      expect(applied.fabrics[0]?.attribution).toEqual(preset.attribution);
       expect(rustRefuses(file, applied)).toBeNull();
       const reverted = revertCommand(applied, cmd);
       expect(JSON.stringify(reverted)).toBe(JSON.stringify(entities));

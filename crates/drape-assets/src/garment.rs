@@ -94,7 +94,7 @@ pub struct AttributionSpec {
 #[serde(deny_unknown_fields)]
 pub struct FabricSpec {
     pub name: String,
-    /// woven | knit | nonwoven
+    /// woven | knit | nonwoven (also latex sheet; docs/FABRICS.md)
     pub category: String,
     #[serde(default)]
     pub notes: Option<String>,
